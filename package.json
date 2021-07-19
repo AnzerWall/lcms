@@ -1,5 +1,5 @@
 {
-  "name": "lcms",
+  "name": "@anzerwall/lcms",
   "version": "0.7.0",
   "description": "",
   "main": "lib/index.js",
