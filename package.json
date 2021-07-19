@@ -1,0 +1,36 @@
+{
+  "name": "lcms",
+  "version": "0.7.0",
+  "description": "",
+  "main": "lib/index.js",
+  "author": "anzerwall@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "neon-cli": "^0.8.3",
+    "node-pre-gyp": "^0.17.0"
+  },
+  "scripts": {
+    "install": "node-pre-gyp install --fallback-to-build=false || neon build --release",
+    "package": "node-pre-gyp package",
+    "upload-binary": "node-pre-gyp package && node-pre-gyp-github publish"
+  },
+  "devDependencies": {
+    "node-pre-gyp-github": "^1.4.3",
+    "standard-version": "^9.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anzerwall/lcms.git"
+  },
+  "files": [
+    "lib"
+  ],
+  "binary": {
+    "module_name": "index",
+    "host": "https://github.com/anzerwall/lcms/releases/download/",
+    "remote_path": "{version}",
+    "package_name": "{node_abi}-{platform}-{arch}.tar.gz",
+    "module_path": "./native",
+    "pkg_path": "."
+  }
+}
