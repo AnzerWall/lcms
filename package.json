@@ -21,14 +21,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anzerwall/lcms.git"
+    "url": "git+https://github.com/AnzerWall/lcms.git"
   },
   "files": [
     "lib"
   ],
   "binary": {
     "module_name": "index",
-    "host": "https://github.com/anzerwall/lcms/releases/download/",
+    "host": "https://github.com/AnzerWall/lcms/releases/download/",
     "remote_path": "{version}",
     "package_name": "{node_abi}-{platform}-{arch}.tar.gz",
     "module_path": "./native",
