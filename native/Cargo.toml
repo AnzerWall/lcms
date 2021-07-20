@@ -1,9 +1,8 @@
 [package]
 name = "lcms"
-version = "0.1.0"
+version = "0.8.0"
 authors = ["yuenze3 <yuenze@jd.com>"]
 license = "MIT"
-build = "build.rs"
 edition = "2018"
 exclude = ["artifacts.json", "index.node"]
 
@@ -15,5 +14,8 @@ crate-type = ["cdylib"]
 neon-build = "0.8.3"
 
 [dependencies]
-neon = "0.8.3"
 lcms2 = "5.4.1"
+    [dependencies.neon]
+    version = "0.8.3"
+    default-features = false
+    features = ["napi-4"]

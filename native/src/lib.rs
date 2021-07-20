@@ -4,7 +4,7 @@ use neon::prelude::*;
 fn convert_cmyk2srgb(mut cx: FunctionContext) -> JsResult<JsBuffer> {
     let icc_buffer_v8 = cx.argument::<JsBuffer>(0)?;
     let source_buffer_v8 = cx.argument::<JsBuffer>(1)?;
-    let intent = match cx.argument::<JsNumber>(2)?.value() as u32 {
+    let intent = match cx.argument::<JsNumber>(2)?.value(&mut cx) as u32 {
         0 => Intent::Perceptual,
         1 => Intent::RelativeColorimetric,
         2 => Intent::Saturation,
@@ -56,11 +56,11 @@ fn convert_cmyk2srgb(mut cx: FunctionContext) -> JsResult<JsBuffer> {
 
 fn convert_cmyk2srgb_by_pixel_float(mut cx: FunctionContext) -> JsResult<JsArray> {
     let icc_buffer_v8 = cx.argument::<JsBuffer>(0)?;
-    let c = cx.argument::<JsNumber>(1)?.value();
-    let m = cx.argument::<JsNumber>(2)?.value();
-    let y = cx.argument::<JsNumber>(3)?.value();
-    let k = cx.argument::<JsNumber>(4)?.value();
-    let intent = match cx.argument::<JsNumber>(5)?.value() as u32 {
+    let c = cx.argument::<JsNumber>(1)?.value(&mut cx);
+    let m = cx.argument::<JsNumber>(2)?.value(&mut cx);
+    let y = cx.argument::<JsNumber>(3)?.value(&mut cx);
+    let k = cx.argument::<JsNumber>(4)?.value(&mut cx);
+    let intent = match cx.argument::<JsNumber>(5)?.value(&mut cx) as u32 {
         0 => Intent::Perceptual,
         1 => Intent::RelativeColorimetric,
         2 => Intent::Saturation,
@@ -99,7 +99,7 @@ fn convert_cmyk2rgb(mut cx: FunctionContext) -> JsResult<JsBuffer> {
     let target_icc_buffer_v8 = cx.argument::<JsBuffer>(1)?;
 
     let source_buffer_v8 = cx.argument::<JsBuffer>(2)?;
-    let intent = match cx.argument::<JsNumber>(3)?.value() as u32 {
+    let intent = match cx.argument::<JsNumber>(3)?.value(&mut cx) as u32 {
         0 => Intent::Perceptual,
         1 => Intent::RelativeColorimetric,
         2 => Intent::Saturation,
